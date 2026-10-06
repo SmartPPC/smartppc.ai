@@ -18,8 +18,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=7" />
-  <script>document.documentElement.classList.add("js", "at-start");</script>
+  <link rel="stylesheet" href="styles.css?v=9" />
+  <script>
+    // Desktop with a mouse: full-screen zoom stage. Phones/tablets: simple scrolling page.
+    if (matchMedia("(min-width: 980px) and (hover: hover) and (pointer: fine)").matches) document.documentElement.classList.add("js", "at-start");
+  </script>
 </head>
 <body>
   <!-- Shared brush filter (ragged hand-painted edge, same as the ad) -->
@@ -248,6 +251,6 @@
     <div><button class="pill pill--small" data-consent="yes">Accept</button><button class="link" data-consent="no">Decline</button></div>
   </div>
 
-  <script src="main.js?v=2"></script>
+  <script src="main.js?v=3"></script>
 </body>
 </html>

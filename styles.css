@@ -277,7 +277,7 @@ h3 { font: 500 18px/1.35 var(--sans); margin: 0 0 6px; }
 .audit__note { font: 400 11px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 @media (min-width: 980px) { .audit__intro { font-size: 17px; } .audit h3 { font-size: 18px; } .audit p { font-size: 15px; } }
 @media (max-width: 719px) {
-  .audit__intro { display: none; } /* the note under the button carries the essentials on phones */
+  .js .audit__intro { display: none; } /* the note under the button carries the essentials on phones */
   .audit { gap: 10px; }
   .audit li { padding-top: 9px; }
   .audit li::before { top: 12px; }
@@ -327,6 +327,20 @@ h3 { font: 500 18px/1.35 var(--sans); margin: 0 0 6px; }
 .scene { padding: 64px 0; }
 .scene__inner { display: grid; gap: 32px; }
 .track, .progress, .hint { display: none; }
+
+/* ── Simple scrolling page (phones / tablets — no "js" class) ─────────────
+   Sections stack and scroll natively; each image sits as a banner above its
+   copy; the header (brand row + section tabs) stays pinned. */
+html:not(.js) { scroll-padding-top: var(--nav-h); } /* section rule tucks under the header rule */
+html:not(.js) .scene { padding: 52px 0; border-top: 1px solid var(--rule); }
+html:not(.js) .scene.hero { border-top: 0; padding: 32px 0 48px; }
+@media (max-width: 979px) {
+  html:not(.js) .scene__inner { display: flex; flex-direction: column; gap: 24px; }
+  html:not(.js) .plate { order: -1; width: 100%; aspect-ratio: 16 / 9; }
+  html:not(.js) .hero .plate { display: none; } /* lead with the headline and button */
+  html:not(.js) .steps.steps--four { gap: 22px; }
+}
+@media (min-width: 600px) and (max-width: 979px) { html:not(.js) .plate { aspect-ratio: 21 / 9; } }
 
 /* ── Zoom stage ───────────────────────────────────────────
    Every scene sits on one fixed stage. The invisible .track supplies one
