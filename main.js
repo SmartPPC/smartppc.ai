@@ -1,8 +1,6 @@
 // ─── Site config — fill these in ──────────────────────────────────────────────
-// Booking lives on book.html (Cal.com: cal.com/smartppc/free-audit); contact: info@smartppc.ai
-const CONFIG = {
-  linkedinPartnerId: "", // LinkedIn Insight Tag partner ID (Campaign Manager → Insight Tag)
-};
+// Booking lives on book.html (Cal.com: cal.com/smartppc/free-audit); contact: info@smartppc.ai.
+// The LinkedIn Insight Tag + cookie banner live in insight.js (shared by every page).
 
 const root = document.documentElement;
 const nav = document.querySelector(".nav");
@@ -430,42 +428,4 @@ if (STAGE) {
   document.fonts?.ready.then(placeInk);
   if (isReload) scrollTo({ top: 0, behavior: "instant" });
   onScroll();
-}
-
-// ─── LinkedIn Insight Tag — only after consent (UK PECR) ─────────────────────
-const CONSENT_KEY = "smartppc-consent";
-const readConsent = () => {
-  try {
-    return localStorage.getItem(CONSENT_KEY);
-  } catch {
-    return null;
-  }
-};
-const loadInsightTag = () => {
-  window._linkedin_partner_id = CONFIG.linkedinPartnerId;
-  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-  window._linkedin_data_partner_ids.push(CONFIG.linkedinPartnerId);
-  const s = document.createElement("script");
-  s.async = true;
-  s.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-  document.head.appendChild(s);
-};
-if (CONFIG.linkedinPartnerId) {
-  const consent = readConsent();
-  if (consent === "yes") loadInsightTag();
-  else if (consent !== "no") {
-    const banner = document.getElementById("consent");
-    banner.hidden = false;
-    banner.addEventListener("click", (e) => {
-      const choice = e.target.closest("[data-consent]")?.dataset.consent;
-      if (!choice) return;
-      try {
-        localStorage.setItem(CONSENT_KEY, choice);
-      } catch {
-        // storage blocked — choice applies to this visit only
-      }
-      banner.hidden = true;
-      if (choice === "yes") loadInsightTag();
-    });
-  }
 }

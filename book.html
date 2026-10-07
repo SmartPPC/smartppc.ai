@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=10" />
 </head>
 <body>
   <header class="nav is-scrolled">
@@ -70,6 +70,11 @@
       layout: "month_view",
       cssVarsPerTheme: { light: { "cal-brand": "#D85A30" } },
     });
+    // After a booking, go to the thanks page (LinkedIn counts that page as a booked audit)
+    const toThanks = () => { location.href = "thanks.html"; };
+    Cal.ns["free-audit"]("on", { action: "bookingSuccessfulV2", callback: toThanks });
+    Cal.ns["free-audit"]("on", { action: "bookingSuccessful", callback: toThanks });
   </script>
+  <script src="insight.js?v=1"></script>
 </body>
 </html>

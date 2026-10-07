@@ -311,6 +311,13 @@ h3 { font: 500 18px/1.35 var(--sans); margin: 0 0 6px; }
 .book-page__fallback { padding: 32px 26px; display: grid; gap: 12px; justify-items: start; }
 .book-page__fallback p { margin: 0; color: var(--ink-soft); }
 
+/* ── Thanks page (thanks.html) ───────────────────────── */
+.thanks-page { padding-top: 56px; }
+.thanks-page__inner { max-width: 640px; }
+.thanks-page .h2 { margin-bottom: 0; }
+.thanks-page .audit { margin-top: 8px; }
+.thanks-page .pill { margin-top: 26px; }
+
 /* ── Consent ──────────────────────────────────────────── */
 .consent {
   position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 30;
@@ -321,6 +328,8 @@ h3 { font: 500 18px/1.35 var(--sans); margin: 0 0 6px; }
 .consent[hidden] { display: none; }
 .consent p { margin: 0; flex: 1 1 240px; }
 .consent p a { color: var(--ink-soft); text-underline-offset: 3px; }
+.consent .link { padding: 8px 4px; }
+[data-consent-reset] { padding: 0; font-size: inherit; }
 .consent div { display: flex; gap: 8px; align-items: center; }
 
 /* ── Without JS: an ordinary stacked page ─────────────── */
